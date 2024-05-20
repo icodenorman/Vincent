@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clicker Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: gainsboro;
+    }
+    #score {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    #click_button {
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    
+    <h1>Clicker Game</h1>
+    <div id="score">Score: 0</div>
+    <button id="click_button" onclick="incrementScore()"><img  src="https://motionbgs.com/media/216/zoro-purgatory-onigiri_312.webp" ></button>
+    <button id="upgrade_button" class="button" onclick="upgrade()">Upgrade (Cost: 10)</button>
+
+    <script>
+        let upgradeCost = 10;
+        let clickPower = 1;
+        let score = 0;
+
+        function incrementScore() {
+            score = score + clickPower
+            document.getElementById("score").textContent = "Score: " + score;
+        }
+
+        function upgrade() {
+            if (score >= upgradeCost) {
+                clickPower++;
+                score -= upgradeCost;
+                upgradeCost *= 2;
+                document.getElementById("score").textContent = "Score: " + score;
+                document.getElementById("upgrade_button").textContent = "Upgrade (Cost: " + upgradeCost + ")";
+            } else {
+                alert("Not enough score to upgrade!");
+            }
+        }
+    </script>
+<style>
+    body {
+      background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUTEhIVFRUVFRcXFxUVFRUXFxcXFxUXFxcVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALcBEwMBIgACEQEDEQH/xAAYAAADAQEAAAAAAAAAAAAAAAAAAQIDB//EAB4QAQEBAQEBAAIDAAAAAAAAAAABEQISIWHwQVGB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AOPaCVQHJjTwCsLFFKBeU8xdAJsGLwgZ2F5aeReQQUaTn8DwCQ08l5BEUqQeQReSkadRPkE4JGmFARYDsKgWnDEAxgh0EWCK0UE+TwQQCMQqApDQBnqJTgK04mq5oKFhyiwEq5hKA0/k4fIFhYvyeAhXlUMEWDk5FQC8lOVngM/A8NLE2Anyny0LAZ4MaYJAZ+TnK7BYCPKby0w8BheS65alcBjIo7hYBaD8jALAACIcEXgJV5PFYBSKkEq5ATIKuHgM5FSKwgVgkEVPoIi5BzyrALBzFYMArBIo8BnSsXn4PyDPB5aeUgnC8qw5AZ2BpU2QGdKrsTYCMT00SDLweLxOAUhdUVNgHL+4BIATy0RioCocI7QPGkjPmtJ0ByKqVQBgz+1SCAU5aeYXK5AKQYuQgEgioMBMgxRUCFPBgJqcaYWAmQsXYVBFn1Ni6mgmlVJoIpVXRAixONE2gipsXhAjyFYARogjSAOT8iRUgCfGvPKMacAMKn6MFSHORzFyAUh8nRAPTidPm7QVIOoengFhYcPASLFYVAtKw8FgJsTYuwugZ2Iq+iBNKRVhQE1NXUAmpqkgmliqQAJMERcTFwFSKwoqAriHhcq0E2HOTqp0CuOcX9T6PnQPBhyFAGL55ZrkBZyDBQMCDQKimQELALQKp6p1NgIwVWf0V+giwqq0rQRU1VqQTUq6SCeiVUgWgaYJ4Xyz1QLitRFSg1isZ89NJQTn1cgL0C+a01nyc6Bco3+Cn05AOHBh6B8qTFADpDQEAhUCpQWlv0AXRXstA9Z2qxIFYmj0m0BaXVHlNBNpaLPpUBSLRAKg8AJkPClVKBqJUBXKp0iNIBnKnVQFf6MJQL5ioylaSgoJAK1WoGg0gZzo/QKK0ek3oBAzvZegaCs9P0B6z6p2l0BfyV5SegKy6q+uk0E1OCloIsHPK9KgeBHoAOY0iIeg0hsvStBXK/SeaqAqU50kaC9F6T6EoNIadIGkqtYyrlBcp6z0aC9PU6VoKtL0i9ADtF6IpQP0WlaVoDqiUFoArTtR1QOotP0z7oHRU+iA9T1TTQK7+4TSdAE8U0SqgKFK0+AXzVSpkAK9C1FpygudYfNZ+hzQbaXPSLRoNuROmfoegaSnrKU50DSdHrPTlBVGpvRegO0anSvQK0Ws70Wg19RNqNF6BVCNFoKxPRTor0CLDqaAUWEIBygsAH5GKOgkxhUFylamgDtEpaAVKNRpaDXS9I0dUFynrKD0DfR6Y+x6Bt6P0x9HoLvYvSLQDTml6RolA/Q9s7QCr0PaNPmAvSoIBowxoJCh5BODD5O8gWg/JAZ6AA9JvJAB9GgAWiUAFanQALqkYASkYASHgAHDgACkQA4LQAApACsMAD0aAA0SgAcAAK5hyAAAAD//2Q==');
+      background-repeat: no-repeat;
+      background-size: 175%;
+
+    }
+    </style>
+<a href="index.html"><H1>Go Back</H1></a>
+
+
+</body>
+</html>
